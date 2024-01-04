@@ -15,7 +15,7 @@ interface TourismDao {
     fun getFavoriteTourism(): Flowable<List<TourismEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTourism(tourism: List<TourismEntity>): Completable
+    fun insertTourism(tourism: List<TourismEntity>): Completable //Completable digunakan untuk memasukan data
 
     @Update
     fun updateFavoriteTourism(tourism: TourismEntity)

@@ -6,6 +6,7 @@ import com.dicoding.tourismapp.core.domain.usecase.TourismUseCase
 
 class HomeViewModel(tourismUseCase: TourismUseCase) : ViewModel() {
 
+                    // mengubah flowable menjadi LiveData
     val tourism = LiveDataReactiveStreams.fromPublisher(tourismUseCase.getAllTourism())
 
 }

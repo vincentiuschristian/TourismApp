@@ -16,7 +16,7 @@ class TourismRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors,
-): ITourismRepository {
+) : ITourismRepository {
 
     companion object {
         @Volatile

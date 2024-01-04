@@ -3,6 +3,7 @@ package com.dicoding.tourismapp.detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.content.IntentCompat.getParcelableExtra
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.dicoding.tourismapp.R
@@ -29,7 +30,7 @@ class DetailTourismActivity : AppCompatActivity() {
         val factory = ViewModelFactory.getInstance(this)
         detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
 
-        val detailTourism = intent.getParcelableExtra<Tourism>(EXTRA_DATA)
+        val detailTourism = getParcelableExtra(intent, EXTRA_DATA, Tourism::class.java)
         showDetailTourism(detailTourism)
     }
 

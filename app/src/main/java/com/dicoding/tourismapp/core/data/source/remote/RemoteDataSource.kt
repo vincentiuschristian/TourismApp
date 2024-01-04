@@ -29,17 +29,18 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
         //get data from remote api
         val client = apiService.getList()
 
-       client
-           .subscribeOn(Schedulers.computation())
-           .observeOn(AndroidSchedulers.mainThread())
-           .take(1)
-           .subscribe({ response ->
-               val dataArray = response.places
-               resultData.onNext(if (dataArray.isNotEmpty()) ApiResponse.Success(dataArray) else ApiResponse.Empty)
-           }, {error ->
-               resultData.onNext(ApiResponse.Error(error.message.toString()))
-               Log.e("RemoteDataSourc", error.toString())
-           })
+        client
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            // menggunakan take(1) karena operator first() akan menghasilkan error jika datanya kosong
+            .take(1)
+            .subscribe({ response ->
+                val dataArray = response.places
+                resultData.onNext(if (dataArray.isNotEmpty()) ApiResponse.Success(dataArray) else ApiResponse.Empty)
+            }, { error ->
+                resultData.onNext(ApiResponse.Error(error.message.toString()))
+                Log.e("RemoteDataSourc", error.toString())
+            })
 
         return resultData.toFlowable(BackpressureStrategy.BUFFER)
     }
