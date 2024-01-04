@@ -12,22 +12,6 @@ import com.dicoding.tourismapp.home.HomeViewModel
 class ViewModelFactory private constructor(private val tourismUseCase: TourismUseCase) :
     ViewModelProvider.NewInstanceFactory() {
 
-    companion object {
-        @Volatile
-        private var instance: ViewModelFactory? = null
-
-        fun getInstance(context: Context): ViewModelFactory =
-            instance
-                ?: synchronized(this) {
-                instance
-                    ?: ViewModelFactory(
-                        Injection.provideTourismUseCase(
-                            context
-                        )
-                    )
-            }
-    }
-
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
         when {
@@ -42,4 +26,20 @@ class ViewModelFactory private constructor(private val tourismUseCase: TourismUs
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
+
+    companion object {
+        @Volatile
+        private var instance: ViewModelFactory? = null
+
+        fun getInstance(context: Context): ViewModelFactory =
+            instance
+                ?: synchronized(this) {
+                    instance
+                        ?: ViewModelFactory(
+                            Injection.provideTourismUseCase(
+                                context
+                            )
+                        )
+                }
+    }
 }
