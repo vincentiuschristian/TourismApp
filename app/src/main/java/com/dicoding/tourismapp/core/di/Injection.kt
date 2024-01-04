@@ -11,9 +11,8 @@ import com.dicoding.tourismapp.core.domain.usecase.TourismUseCase
 import com.dicoding.tourismapp.core.utils.AppExecutors
 
 object Injection {
-    fun provideRepository(context: Context): TourismRepository {
+    private fun provideRepository(context: Context): TourismRepository {
         val database = TourismDatabase.getInstance(context)
-
         val remoteDataSource = RemoteDataSource.getInstance(ApiConfig.provideApiService())
         val localDataSource = LocalDataSource.getInstance(database.tourismDao())
         val appExecutors = AppExecutors()

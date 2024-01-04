@@ -29,7 +29,7 @@
                 android:contentDescription="@string/image_description"
                 android:scaleType="centerCrop" />
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -49,6 +49,6 @@
         android:contentDescription="@string/menu_favorite"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/ic_favorite_white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
