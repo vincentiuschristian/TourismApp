@@ -26,7 +26,7 @@ val databaseModule = module {
     }
 }
 
-val networkModule = module{
+val networkModule = module {
     single {
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -34,7 +34,6 @@ val networkModule = module{
             .readTimeout(120, TimeUnit.SECONDS)
             .build()
     }
-
     single {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://tourism-api.dicoding.dev/")

@@ -8,14 +8,11 @@ import com.bumptech.glide.Glide
 import com.dicoding.tourismapp.R
 import com.dicoding.tourismapp.core.domain.model.Tourism
 import com.dicoding.tourismapp.databinding.ActivityDetailTourismBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DetailTourismActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-    }
-
-    private lateinit var detailTourismViewModel: DetailTourismViewModel
+    private val detailTourismViewModel: DetailTourismViewModel by viewModel()
     private lateinit var binding: ActivityDetailTourismBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,5 +60,9 @@ class DetailTourismActivity : AppCompatActivity() {
                 )
             )
         }
+    }
+
+    companion object {
+        const val EXTRA_DATA = "extra_data"
     }
 }
