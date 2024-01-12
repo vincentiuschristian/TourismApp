@@ -6,7 +6,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-abstract class AppModule{
+abstract class AppModule {
 
     @Binds
     abstract fun provideTourismUseCase(tourismInteractor: TourismInteractor): TourismUseCase
