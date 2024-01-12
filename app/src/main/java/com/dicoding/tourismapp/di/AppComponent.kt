@@ -14,8 +14,8 @@ import dagger.Component
 interface AppComponent {
 
     @Component.Factory
-    interface Factory{
-        fun create(coreComponent: CoreComponent):AppComponent
+    interface Factory {
+        fun create(coreComponent: CoreComponent): AppComponent
     }
 
     fun inject(fragment: HomeFragment)
