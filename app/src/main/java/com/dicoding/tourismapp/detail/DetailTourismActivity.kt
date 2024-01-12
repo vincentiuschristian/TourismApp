@@ -28,7 +28,8 @@ class DetailTourismActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         val factory = ViewModelFactory.getInstance(this)
-        detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
+        detailTourismViewModel =
+            ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
 
         val detailTourism = getParcelableExtra(intent, EXTRA_DATA, Tourism::class.java)
         showDetailTourism(detailTourism)
@@ -54,9 +55,19 @@ class DetailTourismActivity : AppCompatActivity() {
 
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (statusFavorite) {
-            binding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_white))
+            binding.fab.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_favorite_white
+                )
+            )
         } else {
-            binding.fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_not_favorite_white))
+            binding.fab.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_not_favorite_white
+                )
+            )
         }
     }
 }
