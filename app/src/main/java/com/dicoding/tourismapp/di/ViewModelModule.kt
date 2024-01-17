@@ -12,8 +12,14 @@ import dagger.multibindings.IntoMap
 
 @Module
 abstract class ViewModelModule {
+
+    /*
+    Inject object ini ke dalam Map (@IntoMap) dengan HomeViewModel::class sebagai Key (@ViewModelKey)
+    dan HomeViewModel sebagai value (parameter pada fungsi)
+    */
+
     @Binds
-    @IntoMap
+    @IntoMap    //digunakan untuk menandai viewmodel yang ingin di inject
     @ViewModelKey(HomeViewModel::class)
     abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
 
@@ -28,5 +34,5 @@ abstract class ViewModelModule {
     abstract fun bindDetailViewModel(viewModel: DetailTourismViewModel): ViewModel
 
     @Binds
-    abstract fun bindViewModelFactory(factory: ViewModelFactory) : ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }
