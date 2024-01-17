@@ -56,7 +56,8 @@ class HomeFragment : Fragment() {
                             binding.apply {
                                 progressBar.visibility = View.GONE
                                 viewError.root.visibility = View.VISIBLE
-                                viewError.tvError.text = tourism.message ?: getString(R.string.something_wrong)
+                                viewError.tvError.text =
+                                    tourism.message ?: getString(R.string.something_wrong)
                             }
                         }
                     }
