@@ -38,6 +38,7 @@ object DataMapper {
                 isFavorite = it.isFavorite
             )
         }
+    
     fun mapDomainToEntity(input: Tourism) = TourismEntity(
         tourismId = input.tourismId,
         description = input.description,
