@@ -7,8 +7,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat.getParcelableExtra
 import com.bumptech.glide.Glide
 import com.dicoding.tourismapp.R
-import com.dicoding.tourismapp.core.domain.model.Tourism
 import com.dicoding.tourismapp.databinding.ActivityDetailTourismBinding
+import com.example.core.domain.model.Tourism
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
