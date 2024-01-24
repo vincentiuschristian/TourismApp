@@ -1,5 +1,6 @@
 package com.example.core.data
 
+import com.example.core.data.source.local.LocalDataSource
 import com.example.core.data.source.remote.RemoteDataSource
 import com.example.core.data.source.remote.network.ApiResponse
 import com.example.core.data.source.remote.response.TourismResponse
@@ -12,12 +13,12 @@ import kotlinx.coroutines.flow.map
 
 class TourismRepository(
     private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: com.example.core.data.source.local.LocalDataSource,
+    private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors,
 ) : ITourismRepository {
 
-    override fun getAllTourism(): Flow<com.example.core.data.Resource<List<Tourism>>> =
-        object : com.example.core.data.NetworkBoundResource<List<Tourism>, List<TourismResponse>>() {
+    override fun getAllTourism(): Flow<Resource<List<Tourism>>> =
+        object : NetworkBoundResource<List<Tourism>, List<TourismResponse>>() {
             override fun loadFromDB(): Flow<List<Tourism>> {
                 return localDataSource.getAllTourism().map {
                     DataMapper.mapEntitiesToDomain(it)

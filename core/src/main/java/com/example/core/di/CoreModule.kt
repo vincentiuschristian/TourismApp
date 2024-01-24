@@ -1,6 +1,8 @@
 package com.example.core.di
 
 import androidx.room.Room
+import com.example.core.data.TourismRepository
+import com.example.core.data.source.local.LocalDataSource
 import com.example.core.data.source.local.room.TourismDatabase
 import com.example.core.data.source.remote.RemoteDataSource
 import com.example.core.data.source.remote.network.ApiService
@@ -43,8 +45,8 @@ val networkModule = module {
 }
 
 val repositoryModule = module {
-    single { com.example.core.data.source.local.LocalDataSource(get()) }
+    single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
     factory { AppExecutors() }
-    single<ITourismRepository> { com.example.core.data.TourismRepository(get(), get(), get()) }
+    single<ITourismRepository> { TourismRepository(get(), get(), get()) }
 }
